@@ -1,16 +1,20 @@
+require('dotenv').config();
 const express = require('express');
 const line = require('@line/bot-sdk');
 
 const app = express();
 
+
+
+
 /**
  * 🔑 ใส่ค่าจาก LINE Developers Console
  * Messaging API
- */
-const config = {
-  channelAccessToken: 'uMUxAdB/JDm15pyY7ldin+5polvdfZgG8ksoTHrur689xlh6MuTywu5qBUD9yTZ4QBTmnAE4AjxCzT56MbdQJoZmZQctNjAOcBVWnHvWDKuLTkRic/lIA1lVUBRebUQ7175rBTic3CoeS/NDH9zjbgdB04t89/1O/w1cDnyilFU=',
-  channelSecret: '6f5fdf60c8efffbbd75385a372dc20f1'
+ */const config = {
+  channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN || "",
+  channelSecret: process.env.LINE_CHANNEL_SECRET || ""
 };
+
 
 /**
  * ✅ LINE middleware (จำเป็น)
@@ -73,6 +77,11 @@ async function handleEvent(event) {
 /**
  * ✅ Start server
  */
+// เพิ่ม GET Method
+app.get('/', (req, res) => {
+  res.send('hello world, Phagamas');
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
