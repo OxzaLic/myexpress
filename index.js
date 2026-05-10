@@ -7,13 +7,17 @@ const app = express();
 
 
 
-/**
- * 🔑 ใส่ค่าจาก LINE Developers Console
- * Messaging API
- */const config = {
-  channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN || "",
-  channelSecret: process.env.LINE_CHANNEL_SECRET || ""
+// ตั้งค่าจาก LINE Developers Console
+// create LINE SDK config from env variables
+const config = {
+  channelSecret: process.env.LINE_CHANNEL_SECRET,
 };
+
+// create LINE SDK client
+const client = line.LineBotClient.fromChannelAccessToken({
+  channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN,
+});
+
 
 
 /**
