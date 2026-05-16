@@ -2,6 +2,14 @@
   "name": "myexpress",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://github.com/OxzaLic/myexpress#readme",
+  "bugs": {
+    "url": "https://github.com/OxzaLic/myexpress/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OxzaLic/myexpress.git"
+  },
   "license": "ISC",
   "author": "",
   "type": "commonjs",

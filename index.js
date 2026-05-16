@@ -13,13 +13,6 @@ const config = {
   channelSecret: process.env.LINE_CHANNEL_SECRET,
 };
 
-// create LINE SDK client
-const client = line.LineBotClient.fromChannelAccessToken({
-  channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN,
-});
-
-
-
 /**
  * ✅ LINE middleware (จำเป็น)
  * ใช้เฉพาะ path /callback
@@ -30,7 +23,7 @@ app.use('/callback', line.middleware(config));
  * ✅ สร้าง LINE client
  */
 const client = new line.messagingApi.MessagingApiClient({
-  channelAccessToken: config.channelAccessToken
+  channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN
 });
 
 /**
@@ -85,7 +78,6 @@ async function handleEvent(event) {
 app.get('/', (req, res) => {
   res.send('hello world, Phagamas');
 });
-
 const PORT = process.env.PORT || 3013;
 app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
